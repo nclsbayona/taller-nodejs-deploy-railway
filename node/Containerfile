@@ -1,0 +1,11 @@
+FROM docker.io/node:20-alpine3.17
+WORKDIR /home
+COPY .env ./.env
+COPY package.json ./package.json
+COPY start.sh ./start.sh
+COPY index.js ./index.js
+RUN npm install
+RUN apk add --update netcat-openbsd && rm -rf /var/cache/apk/*
+RUN chmod +x /home/start.sh
+EXPOSE 1337
+CMD ["./start.sh" ]

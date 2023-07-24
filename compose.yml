@@ -1,0 +1,13 @@
+services:
+  db:
+    build: 
+      context: postgres
+      dockerfile: Containerfile
+    environment:
+      POSTGRES_PASSWORD: postgres
+  app:
+    build:
+      context: node
+      dockerfile: Containerfile
+    ports:
+      - 80:1337
