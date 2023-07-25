@@ -7,5 +7,6 @@ COPY index.js ./index.js
 RUN npm install
 RUN apk add --update netcat-openbsd && rm -rf /var/cache/apk/*
 RUN chmod +x /home/start.sh
-EXPOSE 1337
+ENV PORT=1337
+EXPOSE $PORT
 CMD ["./start.sh" ]
